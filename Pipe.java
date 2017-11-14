@@ -18,7 +18,6 @@ public class Pipe {
     protected String chemicalRes;   //Chemical Resistance
     protected int colourCount;
     protected final double[] costByGrade;       //Cost of 1 cubic inch of plastic by grade
-    protected int[] validGrades;
     protected int quantity;
 
     public Pipe() {
@@ -63,12 +62,17 @@ public class Pipe {
 
     }
 
-    protected void addValidGrades(int[] _grades) {
-        validGrades = _grades;
-    }
+
     
     protected int getColourCount(){
         return colourCount;
+    }
+    
+    public void getPrice(double d){
+        double finalPrice;
+        //costByGrade[grade - 1] * inches;
+         
+       
     }
     
 }
@@ -77,11 +81,12 @@ class Pipe1 extends Pipe {
 
     public Pipe1(double _length, double _diameter, int _grade, String _chemicalRes, int _quantity) {
         super(_length,_diameter, _grade,0,"N","N", _chemicalRes, _quantity);
-
-        validGrades = new int[3];
-        super.addValidGrades(new int[]{1, 2, 3});
+        
 
     }
+    
+    
+    
     
 }
 
@@ -90,8 +95,6 @@ class Pipe2 extends Pipe {
     public Pipe2(double _length, double _diameter, int _grade, String _chemicalRes, int _quantity) {
         super(_length,_diameter, _grade,1,"N","N", _chemicalRes, _quantity);
 
-        validGrades = new int[3];
-        addValidGrades(new int[]{2, 3, 4});
     }
 }
 
@@ -100,8 +103,6 @@ class Pipe3 extends Pipe {
     public Pipe3(double _length, double _diameter, int _grade, String _chemicalRes, int _quantity) {
         super(_length,_diameter, _grade,2,"N","N", _chemicalRes, _quantity);
 
-        validGrades = new int[4];
-        addValidGrades(new int[]{2, 3, 4, 5});
     }
 }
 
@@ -110,8 +111,6 @@ class Pipe4 extends Pipe {
     public Pipe4(double _length, double _diameter, int _grade, String _chemicalRes, int _quantity) {
         super(_length,_diameter, _grade,2,"Y","N", _chemicalRes, _quantity);
 
-        validGrades = new int[4];
-        addValidGrades(new int[]{2, 3, 4, 5});
     }
 }
 
@@ -120,7 +119,5 @@ class Pipe5 extends Pipe {
     public Pipe5(double _length, double _diameter, int _grade, String _chemicalRes, int _quantity) {
         super(_length,_diameter, _grade,2,"Y","Y", _chemicalRes, _quantity);
 
-        validGrades = new int[3];
-        addValidGrades(new int[]{3, 4, 5});
     }
 }
