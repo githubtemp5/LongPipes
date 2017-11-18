@@ -10,11 +10,9 @@ public class Pipe5 extends Pipe {
         super(_length,_diameter, _grade,2,"Y","Y", _chemicalRes, _quantity);
 
     }
+    
+    public void run(){
+        System.out.println("Test");
+    }
 }
 
-
-//Testing Comments
-//Update please
-//Another Commit Again
-//And Anothe one
-//Done
