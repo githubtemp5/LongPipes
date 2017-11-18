@@ -5,6 +5,7 @@ package pipes;
  * @author up826133
  */
 public class Pipe {
+
     protected double length;
     protected double diameter;
     protected int grade;
@@ -25,9 +26,21 @@ public class Pipe {
         costByGrade[4] = 0.95;
     }
 
+    /**
+     * Constructor of Class Pipe
+     *
+     * @param _length       User input length of the pipe
+     * @param _diameter     User input diametre for the pipe
+     * @param _grade        User input grade 
+     * @param _colourCount  No of colours in the pipe
+     * @param _innerInsulation  whether the pipe has inner insulation or not
+     * @param _outerReinforcement   whether the pipe has the outer metallic  reinforcement
+     * @param chemicalRes           whether the pipe has improved chemical resitance
+     * @param _quantity             quantity of the pipe of the same type
+     */
     public Pipe(double _length, double _diameter, int _grade, int _colourCount, String _innerInsulation, String _outerReinforcement, String _chemicalRes, int _quantity) {
         costByGrade = new double[5];
-        
+
         length = _length;
         grade = _grade;
         innerInsulation = _innerInsulation;
@@ -42,32 +55,28 @@ public class Pipe {
         costByGrade[3] = 0.8;
         costByGrade[4] = 0.95;
     }
-    
-    protected int getGrade(){
+
+    protected int getGrade() {
         return grade;
     }
-    
-    protected void changeGrade(int _grade){
+
+    protected void changeGrade(int _grade) {
         grade = _grade;
     }
-    
 
     public double getCostByGrade() {
         return costByGrade[this.grade - 1];
 
     }
 
-
-    
-    protected int getColourCount(){
+    protected int getColourCount() {
         return colourCount;
     }
-    
-    public void getPrice(double d){
+
+    public void getPrice(double d) {
         double finalPrice;
         //costByGrade[grade - 1] * inches;
-         
-       
+
     }
-    
-}   
+
+}
