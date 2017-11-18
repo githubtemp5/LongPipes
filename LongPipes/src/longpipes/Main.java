@@ -61,13 +61,13 @@ public class Main {
                 }
             }
         }
-
+        //Pipe4
         if (colour == 2 && grade >= 2 && grade <= 5 && insul.equals("Y") && outerInforce.equals("N")) {
-            //Pipe4
             pipes.add(new Pipe4(length, diameter, grade, chemRes, quantity));
         }
+        
+        //Pipe5
         if (colour == 2 && grade >= 3 && grade <= 5 && insul.equals("Y") && outerInforce.equals("Y")) {
-            //Pipe5
             pipes.add(new Pipe5(length, diameter, grade, chemRes, quantity));
         } else {
             System.out.println("Invalid Pipe Type");
