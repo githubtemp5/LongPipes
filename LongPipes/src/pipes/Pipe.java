@@ -35,18 +35,19 @@ public class Pipe {
      * @param _colourCount  No of colours in the pipe
      * @param _innerInsulation  whether the pipe has inner insulation or not
      * @param _outerReinforcement   whether the pipe has the outer metallic  reinforcement
-     * @param chemicalRes           whether the pipe has improved chemical resitance
+     * @param _chemicalRes           whether the pipe has improved chemical resitance
      * @param _quantity             quantity of the pipe of the same type
      */
     public Pipe(double _length, double _diameter, int _grade, int _colourCount, String _innerInsulation, String _outerReinforcement, String _chemicalRes, int _quantity) {
         costByGrade = new double[5];
 
         length = _length;
+        diameter = _diameter;
         grade = _grade;
+        colourCount = _colourCount;
         innerInsulation = _innerInsulation;
         outerReinforcement = _outerReinforcement;
         chemicalRes = _chemicalRes;
-        colourCount = _colourCount;
         quantity = _quantity;
 
         costByGrade[0] = 0.4;
@@ -73,9 +74,15 @@ public class Pipe {
         return colourCount;
     }
 
-    public void getPrice(double d) {
+    public double getPrice() {
         double finalPrice;
         //costByGrade[grade - 1] * inches;
+        //2 *pi* r(h+r)
+        System.out.println("PRICE");
+        System.out.println(diameter+"");
+        System.out.println(length+"");
+        finalPrice = 2 * Math.PI * (diameter/2)* (length * (diameter/2));
+        return finalPrice;
 
     }
 

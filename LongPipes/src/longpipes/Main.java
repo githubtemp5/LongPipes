@@ -35,11 +35,13 @@ public class Main {
             print("Enter the diameter in inches: ");
             diameter = myScanner.nextDouble();
             print("Enter the grade: ");
-            grade= myScanner.nextInt();
+            grade = myScanner.nextInt();
             print("Colour [0], [1], [2]");
-            colour= myScanner.nextInt();
+            colour = myScanner.nextInt();
             print("Insulation: Y/N ");
-            insul = myScanner.nextLine();
+            do {                                    //solve issue where readline reads an empty character when nextInt or nextDouble is execute beforehand
+                insul = myScanner.nextLine();
+            } while (insul.equals(""));
             print("Outer Reinforcement: Y/N");
             outerInforce = myScanner.nextLine();
             print("Chemical Resistance: Y/N");
@@ -50,7 +52,7 @@ public class Main {
         ArrayList<Pipe> pipes = new ArrayList<Pipe>();
 
         //Deciding pipe type
-        if (insul.equals("N") && outerInforce.equals("N")) {
+        if (insul.equalsIgnoreCase("N") && outerInforce.equalsIgnoreCase("N")) {
             //Pipe1
             if (colour == 0) {
                 if (grade >= 1 && grade <= 3) {
@@ -71,16 +73,19 @@ public class Main {
             }
         }
         //Pipe4
-        if (colour == 2 && grade >= 2 && grade <= 5 && insul.equals("Y") && outerInforce.equals("N")) {
+        else if (colour == 2 && grade >= 2 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("N")) {
             pipes.add(new Pipe4(length, diameter, grade, chemRes, quantity));
         }
 
         //Pipe5
-        if (colour == 2 && grade >= 3 && grade <= 5 && insul.equals("Y") && outerInforce.equals("Y")) {
+        else if (colour == 2 && grade >= 3 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("Y")) {
             pipes.add(new Pipe5(length, diameter, grade, chemRes, quantity));
-        } else {
+        } 
+        
+        else {
             System.out.println("Invalid Pipe Type");
         }
+        print(pipes.get(0).getPrice()+"");
 
     }
 
