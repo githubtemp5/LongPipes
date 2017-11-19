@@ -57,7 +57,6 @@ public class Main {
             if (colour == 0) {
                 if (grade >= 1 && grade <= 3) {
                     pipes.add(new Pipe1(length, diameter, grade, chemRes, quantity));
-                    print("Pipe1 created");
                 }
             }
             //Pipe2
@@ -74,12 +73,12 @@ public class Main {
             }
         }
         //Pipe4
-        if (colour == 2 && grade >= 2 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("N")) {
+        else if (colour == 2 && grade >= 2 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("N")) {
             pipes.add(new Pipe4(length, diameter, grade, chemRes, quantity));
         }
 
         //Pipe5
-        if (colour == 2 && grade >= 3 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("Y")) {
+        else if (colour == 2 && grade >= 3 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("Y")) {
             pipes.add(new Pipe5(length, diameter, grade, chemRes, quantity));
         } 
         
