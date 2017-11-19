@@ -32,29 +32,40 @@ public class Main {
         do {
             print("Enter the length of the pipes in metres: ");
             length = myScanner.nextDouble();
+            System.out.println(length+"");
             print("Enter the diameter in inches: ");
             diameter = myScanner.nextDouble();
+            System.out.println(diameter+"");
             print("Enter the grade: ");
-            grade= myScanner.nextInt();
+            grade = myScanner.nextInt();
+            System.out.println(grade+"");
             print("Colour [0], [1], [2]");
-            colour= myScanner.nextInt();
+            colour = myScanner.nextInt();
+            System.out.println(colour+"");
             print("Insulation: Y/N ");
-            insul = myScanner.nextLine();
+            do {
+                insul = myScanner.nextLine();
+            } while (insul.equals(""));
+            System.out.println(insul);
             print("Outer Reinforcement: Y/N");
             outerInforce = myScanner.nextLine();
+            System.out.println(outerInforce);
             print("Chemical Resistance: Y/N");
             chemRes = myScanner.nextLine();
+            System.out.println(chemRes);
             print("Quanity of Pipe: ");
             quantity = myScanner.nextInt();
+            System.out.println(quantity);
         } while (error);
         ArrayList<Pipe> pipes = new ArrayList<Pipe>();
 
         //Deciding pipe type
-        if (insul.equals("N") && outerInforce.equals("N")) {
+        if (insul.equalsIgnoreCase("N") && outerInforce.equalsIgnoreCase("N")) {
             //Pipe1
             if (colour == 0) {
                 if (grade >= 1 && grade <= 3) {
                     pipes.add(new Pipe1(length, diameter, grade, chemRes, quantity));
+                    print("Pipe1 created");
                 }
             }
             //Pipe2
@@ -71,16 +82,18 @@ public class Main {
             }
         }
         //Pipe4
-        if (colour == 2 && grade >= 2 && grade <= 5 && insul.equals("Y") && outerInforce.equals("N")) {
+        if (colour == 2 && grade >= 2 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("N")) {
             pipes.add(new Pipe4(length, diameter, grade, chemRes, quantity));
         }
 
         //Pipe5
-        if (colour == 2 && grade >= 3 && grade <= 5 && insul.equals("Y") && outerInforce.equals("Y")) {
+        if (colour == 2 && grade >= 3 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("Y")) {
             pipes.add(new Pipe5(length, diameter, grade, chemRes, quantity));
-        } else {
+        } 
+        else {
             System.out.println("Invalid Pipe Type");
         }
+        print(pipes.get(0).getPrice()+"");
 
     }
 
