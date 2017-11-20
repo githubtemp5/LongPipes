@@ -78,9 +78,6 @@ public class Pipe {
         double finalPrice;
         //costByGrade[grade - 1] * inches;
         //2 *pi* r(h+r)
-        System.out.println("PRICE");
-        System.out.println(diameter+"");
-        System.out.println(length+"");
         finalPrice = 2 * Math.PI * (diameter/2)* (length * (diameter/2));
         return finalPrice;
 
