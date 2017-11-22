@@ -97,6 +97,7 @@ public class Pipe {
         if (chemicalRes.equalsIgnoreCase("y")) {
             finalCost += (14 * baseCost / 100);
         }
+        finalCost = (double) Math.round(finalCost*100)/100;     //rounding numbers to 2 d.p)
         return finalCost;
 
     }
