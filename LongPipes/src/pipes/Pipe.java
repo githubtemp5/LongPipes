@@ -75,11 +75,29 @@ public class Pipe {
     }
 
     public double getPrice() {
-        double finalPrice;
+        double finalCost = 0;
+        double baseCost;
         //costByGrade[grade - 1] * inches;
         //2 *pi* r(h+r)
-        finalPrice = 2 * Math.PI * (diameter/2)* (length * (diameter/2));
-        return finalPrice;
+        baseCost = Math.PI * Math.pow(diameter / 2, 2) * length * costByGrade[grade - 1];  //base cost
+        finalCost += baseCost;
+
+        if (colourCount == 1) {
+            finalCost += (12 * baseCost / 100);
+        }
+        if (colourCount == 2) {
+            finalCost += (16 * baseCost / 100);
+        }
+        if (innerInsulation.equalsIgnoreCase("y")) {
+            finalCost += (13 * baseCost / 100);
+        }
+        if (outerReinforcement.equalsIgnoreCase("y")) {
+            finalCost += (17 * baseCost / 100);
+        }
+        if (chemicalRes.equalsIgnoreCase("y")) {
+            finalCost += (14 * baseCost / 100);
+        }
+        return finalCost;
 
     }
 
