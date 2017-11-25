@@ -13,6 +13,10 @@ import static java.lang.Integer.parseInt;
  */
 public class Frame extends javax.swing.JFrame {
 
+    private String checkPlasticGrade, checkColour, checkInnerInsulation, checkOuterRienforcement;
+    private boolean colour0, colour1, colour2, innerInsulation, outerRienforcement;
+    private int plasticGrade;
+
     /**
      * Creates new form Frame
      */
@@ -40,12 +44,12 @@ public class Frame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combo_pipe_grade = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        combo_colours = new javax.swing.JComboBox<>();
+        combo_insulation = new javax.swing.JComboBox<>();
+        combo_outer_rienforcement = new javax.swing.JComboBox<>();
         jComboBox5 = new javax.swing.JComboBox<>();
         jTextField3 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -74,7 +78,12 @@ public class Frame extends javax.swing.JFrame {
 
         jLabel9.setText("Quantity of pipe:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "1", "2", "3", "4", "5" }));
+        combo_pipe_grade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "1", "2", "3", "4", "5" }));
+        combo_pipe_grade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_pipe_gradeActionPerformed(evt);
+            }
+        });
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,16 +97,25 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "0", "1", "2" }));
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "YES", "NO" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        combo_colours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                combo_coloursActionPerformed(evt);
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "YES", "NO" }));
+        combo_insulation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "YES", "NO" }));
+        combo_insulation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_insulationActionPerformed(evt);
+            }
+        });
+
+        combo_outer_rienforcement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "YES", "NO" }));
+        combo_outer_rienforcement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_outer_rienforcementActionPerformed(evt);
+            }
+        });
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "YES", "NO" }));
 
@@ -139,11 +157,11 @@ public class Frame extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                             .addGap(49, 49, 49)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(combo_pipe_grade, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(combo_insulation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(combo_colours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(combo_outer_rienforcement, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(jTextField3)))))))
                             .addComponent(jLabel8)
@@ -172,28 +190,29 @@ public class Frame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_pipe_grade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_colours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_insulation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_outer_rienforcement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -219,9 +238,8 @@ public class Frame extends javax.swing.JFrame {
         try {
             input = parseInt(jTextField1.getText());
             jLabel10.setText("");
-            
-        }
-        catch (Exception e) {
+
+        } catch (Exception e) {
             jLabel10.setText("Please enter a number.");
         }
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -231,28 +249,217 @@ public class Frame extends javax.swing.JFrame {
         try {
             input = parseInt(jTextField2.getText());
             jLabel11.setText("");
-            
-        }
-        catch (Exception e) {
+
+        } catch (Exception e) {
             jLabel11.setText("Please enter a number.");
         }
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void combo_insulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_insulationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+        checkInnerInsulation = combo_pipe_grade.getSelectedItem().toString();
+        switch (checkInnerInsulation) {
+            case "Select":
+                combo_outer_rienforcement.setEnabled(false);
+                break;
+            case "YES":
+                innerInsulation = true;
+                break;
+            case "NO":
+                innerInsulation = false;
+                break;
+        }
+        productSelection(1);
+    }//GEN-LAST:event_combo_insulationActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         int input;
         try {
             input = parseInt(jTextField3.getText());
             jLabel12.setText("");
-            
-        }
-        catch (Exception e) {
+
+        } catch (Exception e) {
             jLabel12.setText("Please enter a number.");
         }
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void combo_pipe_gradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_pipe_gradeActionPerformed
+        // TODO add your handling code here:
+        checkPlasticGrade = combo_pipe_grade.getSelectedItem().toString();
+        switch (checkPlasticGrade) {
+            case "Select":
+                disableCombos();
+                break;
+            default:
+                plasticGrade = parseInt(combo_pipe_grade.getSelectedItem().toString());
+                productSelection(1);
+                break;
+        }
+    }//GEN-LAST:event_combo_pipe_gradeActionPerformed
+
+    private void combo_coloursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_coloursActionPerformed
+        // TODO add your handling code here:
+        checkColour = combo_colours.getSelectedItem().toString();
+        switch (checkColour) {
+            case "Select":
+                combo_insulation.setEnabled(false);
+                break;
+            case "0":
+                colour0 = true;
+                colour1 = false;
+                colour2 = false;
+                productSelection(1);
+                break;
+            case "1":
+                colour0 = false;
+                colour1 = true;
+                colour2 = false;
+                productSelection(1);
+                break;
+            case "2":
+                colour0 = false;
+                colour1 = false;
+                colour2 = true;
+                productSelection(1);
+                break;
+        }
+    }//GEN-LAST:event_combo_coloursActionPerformed
+
+    private void combo_outer_rienforcementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_outer_rienforcementActionPerformed
+        // TODO add your handling code here:
+        checkOuterRienforcement = combo_outer_rienforcement.getSelectedItem().toString();
+        switch (checkOuterRienforcement) {
+            case "Yes":
+                outerRienforcement = true;
+                break;
+            case "No":
+                outerRienforcement = false;
+                break;
+        }
+        productSelection(1);
+    }//GEN-LAST:event_combo_outer_rienforcementActionPerformed
+
+    public void disableCombos(){
+        combo_colours.setEnabled(false);
+        combo_insulation.setEnabled(false);
+        combo_outer_rienforcement.setEnabled(false);
+    }
+    
+    public void fillCombos() {
+
+        combo_colours.removeAllItems();
+        if (plasticGrade == 2 || plasticGrade == 3) {
+            combo_colours.addItem("Select");
+            combo_colours.addItem("0");
+            combo_colours.addItem("1");
+            combo_colours.addItem("2");
+        }
+        if (plasticGrade == 4) {
+            combo_colours.addItem("Select");
+            combo_colours.addItem("1");
+            combo_colours.addItem("2");
+        }
+        if (plasticGrade == 5) {
+            combo_colours.addItem("Select");
+            combo_colours.addItem("2");
+        }
+    }
+
+    public void productSelection(int from) {
+        //called from plastic grade
+        if (plasticGrade == 1) {
+            // btn_colours.setEnabled(false);
+            //TYPE 1
+            //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+        }
+        if (plasticGrade == 2) {
+            combo_colours.setEnabled(true);
+            
+            if (colour0 == true) {
+                //TYPE 1
+                //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+            }
+
+            if (colour1 == true) {
+                //TYPE 2
+                //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+            }
+            if (colour2 == true) {
+                combo_insulation.setEnabled(true);
+                if (innerInsulation == false) {
+                    //TYPE 3 
+                    //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+                } else {
+                    //TYPE 4
+                    //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+                }
+            }
+        }
+        if (plasticGrade == 3) {
+            combo_colours.setEnabled(true);
+            if (colour0 == true) {
+                //TYPE 1
+                //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+            }
+            if (colour1 == true) {
+                //TYPE 2
+                //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+            }
+            if (colour2 == true) {
+                combo_insulation.setEnabled(true);
+                if (innerInsulation == false) {
+                    //TYPE 3 
+                    //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+                } else {
+                    combo_outer_rienforcement.setEnabled(true);
+                    if (outerRienforcement == false) {
+                        //TYPE 3
+                        //SET ALL OTHER CONTROL TO ONLY OPTIONS AND GREY
+                    } else {
+                        //TYPE 5
+                    }
+                }
+            }
+        }
+
+        if (plasticGrade == 4) {
+            combo_colours.setEnabled(true);
+            if (colour1 == true) {
+                //TYPE 2
+                //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+            }
+            if (colour2 == true) {
+                combo_insulation.setEnabled(true);
+                if (innerInsulation == false) {
+                    //TYPE 3 
+                    //SET ALL OTHER CONTROLS TO ONLY OPTIONS AND GREY
+                } else {
+                    combo_outer_rienforcement.setEnabled(true);
+                    if (outerRienforcement == false) {
+                        //TYPE 4
+                        //SET ALL OTHER CONTROL TO ONLY OPTIONS AND GREY
+                    } else {
+                        //TYPE 5
+                    }
+                }
+            }
+        }
+        if (plasticGrade == 5) {
+            //SET COLOUR TO C2 AUTOMATICALLY AS ITS THE ONLY OPTION
+            combo_insulation.setEnabled(true);
+            if (innerInsulation == false) {
+                //TYPE 3
+            } else {
+                combo_outer_rienforcement.setEnabled(true);
+                if (outerRienforcement == false) {
+                    //TYPE 4
+                } else {
+                    //TYPE 5
+                }
+            }
+        }
+        fillCombos();
+    }
 
     /**
      * @param args the command line arguments
@@ -290,10 +497,10 @@ public class Frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> combo_colours;
+    private javax.swing.JComboBox<String> combo_insulation;
+    private javax.swing.JComboBox<String> combo_outer_rienforcement;
+    private javax.swing.JComboBox<String> combo_pipe_grade;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
