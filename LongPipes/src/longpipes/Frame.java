@@ -6,7 +6,9 @@
 package longpipes;
 
 import static java.lang.Integer.parseInt;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import pipes.*;
 
 /**
  *
@@ -21,7 +23,8 @@ public class Frame extends javax.swing.JFrame {
     private boolean innerInsulation;
     private boolean outerReinforcement;
     private boolean chemicalResistance;
-    private int quantity;
+    private int pipeQuantity;
+    private ArrayList<Pipe>pipeArray = new ArrayList<Pipe>();
     /**
      * Creates new form Frame
      */
@@ -51,7 +54,7 @@ public class Frame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        pipeSubmit = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         lengthBox = new javax.swing.JTextField();
         diameterBox = new javax.swing.JTextField();
@@ -93,10 +96,10 @@ public class Frame extends javax.swing.JFrame {
 
         jLabel10.setText("Order Quantity:");
 
-        jButton1.setText("Submit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pipeSubmit.setText("Submit");
+        pipeSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                pipeSubmitActionPerformed(evt);
             }
         });
 
@@ -171,7 +174,7 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(pipeSubmit)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(20, 20, 20))
@@ -272,7 +275,7 @@ public class Frame extends javax.swing.JFrame {
                     .addComponent(quantityLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(pipeSubmit)
                     .addComponent(jButton2))
                 .addGap(15, 15, 15))
         );
@@ -293,10 +296,9 @@ public class Frame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+    private void pipeSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSubmitActionPerformed
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_pipeSubmitActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         System.exit(0);
@@ -404,8 +406,35 @@ public class Frame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_quantityBoxFocusLost
 
-    public void checkPipe(){
-    
+    public boolean checkPipe(){
+        if (!innerInsulation && !outerReinforcement) {
+            //Pipe1
+            if (pipeColour == 0) {
+                if (pipeGrade >= 1 && pipeGrade <= 3) {
+                    pipes.add(new Pipe1(pipeLength, pipeDiameter, pipeGrade, chemicalResistance, pipeQuantity));
+                }
+            }
+            //Pipe2
+            if (colour == 1) {
+                if (grade >= 2 && grade <= 4) {
+                    pipes.add(new Pipe2(length, diameter, grade, chemRes, quantity));
+                }
+            }
+            //Pipe3
+            if (colour == 2) {
+                if (grade >= 2 && grade <= 5) {
+                    pipes.add(new Pipe3(length, diameter, grade, chemRes, quantity));
+                }
+            }
+        } //Pipe4
+        else if (colour == 2 && grade >= 2 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("N")) {
+            pipes.add(new Pipe4(length, diameter, grade, chemRes, quantity));
+        } //Pipe5
+        else if (colour == 2 && grade >= 3 && grade <= 5 && insul.equalsIgnoreCase("Y") && outerInforce.equalsIgnoreCase("Y")) {
+            pipes.add(new Pipe5(length, diameter, grade, chemRes, quantity));
+        } else {
+            System.out.println("Invalid Pipe Type");
+        }
     }
     /**
      * @param args the command line arguments
@@ -451,7 +480,6 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> gradeBox;
     private javax.swing.JLabel gradeLabel;
     private javax.swing.JCheckBox insulationBox;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
@@ -468,6 +496,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField lengthBox;
     private javax.swing.JLabel lengthLabel;
+    private javax.swing.JButton pipeSubmit;
     private javax.swing.JTextField quantityBox;
     private javax.swing.JLabel quantityLabel;
     private javax.swing.JCheckBox reinforceBox;
