@@ -4,74 +4,42 @@ package pipes;
  *
  * @author up826133
  */
-public class Pipe {
+public abstract class Pipe {
 
-    protected double length;
-    protected double diameter;
-    protected int grade;
-    protected String innerInsulation;
-    protected String outerReinforcement;   //Outer Metallic Reinforcement
-    protected String chemicalRes;   //Chemical Resistance
-    protected int colourCount;
-    protected final double[] costByGrade;       //Cost of 1 cubic inch of plastic by grade
-    protected int quantity;
-
-    public Pipe() {
-        costByGrade = new double[5];
-
-        costByGrade[0] = 0.4;
-        costByGrade[1] = 0.6;
-        costByGrade[2] = 0.75;
-        costByGrade[3] = 0.8;
-        costByGrade[4] = 0.95;
-    }
+    protected double pipeLength;
+    protected double pipeDiameter;
+    protected int pipeGrade;
+    protected boolean innerInsulation;
+    protected boolean outerReinforcement;   //Outer Metallic Reinforcement
+    protected boolean chemicalResistance;   //Chemical Resistance
+    protected int pipeColourCount;
+    protected int pipeQuantity;
+    public static double[] costByGrade = new double[]{0.4, 0.6, 0.75, 0.8, 0.95};
 
     /**
      * Constructor of Class Pipe
      *
-     * @param _length       User input length of the pipe
-     * @param _diameter     User input diametre for the pipe
-     * @param _grade        User input grade 
-     * @param _colourCount  No of colours in the pipe
-     * @param _innerInsulation  whether the pipe has inner insulation or not
-     * @param _outerReinforcement   whether the pipe has the outer metallic  reinforcement
-     * @param _chemicalRes           whether the pipe has improved chemical resitance
-     * @param _quantity             quantity of the pipe of the same type
+     * @param _pipeLength User input length of the pipe
+     * @param _pipeDiameter User input diametre for the pipe
+     * @param _pipeGrade User input grade
+     * @param _pipeColourCount No of colours in the pipe
+     * @param _innerInsulation whether the pipe has inner insulation or not
+     * @param _outerReinforcement whether the pipe has the outer metallic
+     * reinforcement
+     * @param _chemicalResistance whether the pipe has improved chemical
+     * resistance
+     * @param _pipeQuantity quantity of the pipe of the same type
      */
-    public Pipe(double _length, double _diameter, int _grade, int _colourCount, String _innerInsulation, String _outerReinforcement, String _chemicalRes, int _quantity) {
-        costByGrade = new double[5];
+    public Pipe(double _pipeLength, double _pipeDiameter, int _pipeGrade, int _pipeColourCount, boolean _innerInsulation, boolean _outerReinforcement, boolean _chemicalResistance, int _pipeQuantity) {
 
-        length = _length;
-        diameter = _diameter;
-        grade = _grade;
-        colourCount = _colourCount;
+        pipeLength = _pipeLength;
+        pipeDiameter = _pipeDiameter;
+        pipeGrade = _pipeGrade;
+        pipeColourCount = _pipeColourCount;
         innerInsulation = _innerInsulation;
         outerReinforcement = _outerReinforcement;
-        chemicalRes = _chemicalRes;
-        quantity = _quantity;
-
-        costByGrade[0] = 0.4;
-        costByGrade[1] = 0.6;
-        costByGrade[2] = 0.75;
-        costByGrade[3] = 0.8;
-        costByGrade[4] = 0.95;
-    }
-
-    protected int getGrade() {
-        return grade;
-    }
-
-    protected void changeGrade(int _grade) {
-        grade = _grade;
-    }
-
-    public double getCostByGrade() {
-        return costByGrade[this.grade - 1];
-
-    }
-
-    protected int getColourCount() {
-        return colourCount;
+        chemicalResistance = _chemicalResistance;
+        pipeQuantity = _pipeQuantity;
     }
 
     public double getPrice() {
@@ -79,25 +47,25 @@ public class Pipe {
         double baseCost;
         //costByGrade[grade - 1] * inches;
         //2 *pi* r(h+r)
-        baseCost = Math.PI * Math.pow(diameter / 2, 2) * length * costByGrade[grade - 1];  //base cost
+        baseCost = Math.PI * Math.pow(pipeDiameter / 2, 2) * pipeLength * Pipe.costByGrade[pipeGrade - 1];  //base cost
         finalCost += baseCost;
 
-        if (colourCount == 1) {
-            finalCost += (12 * baseCost / 100);
+        if (pipeColourCount == 1) {     //If you have 1 colour
+            finalCost += (baseCost *0.12);
         }
-        if (colourCount == 2) {
-            finalCost += (16 * baseCost / 100);
+        if (pipeColourCount == 2) {     //If you have two colours
+            finalCost += (baseCost * 0.16);
         }
-        if (innerInsulation.equalsIgnoreCase("y")) {
-            finalCost += (13 * baseCost / 100);
+        if (innerInsulation == true) {      //If the inner insulation is applied
+            finalCost += (baseCost * 0.13);
         }
-        if (outerReinforcement.equalsIgnoreCase("y")) {
-            finalCost += (17 * baseCost / 100);
+        if (outerReinforcement == true) {   //If the outer reinforcement is applied
+            finalCost += (baseCost * 0.17);
         }
-        if (chemicalRes.equalsIgnoreCase("y")) {
-            finalCost += (14 * baseCost / 100);
+        if (chemicalResistance == true) {   //If the chemicalResistance is applied
+            finalCost += (baseCost * 0.14);
         }
-        finalCost = (double) Math.round(finalCost*100)/100;     //rounding numbers to 2 d.p)
+        finalCost = (double) Math.round(finalCost * 100) / 100;     //rounding numbers to 2 d.p)
         return finalCost;
 
     }
