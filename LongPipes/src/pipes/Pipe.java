@@ -55,7 +55,7 @@ public abstract class Pipe {
         finalCost += baseCost;
 
         if (pipeColourCount == 1) {     //If you have 1 colour
-            finalCost += (baseCost *0.12);
+            finalCost += (baseCost * 0.12);
         }
         if (pipeColourCount == 2) {     //If you have two colours
             finalCost += (baseCost * 0.16);
