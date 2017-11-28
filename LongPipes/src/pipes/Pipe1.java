@@ -6,7 +6,7 @@ package pipes;
  */
 public class Pipe1 extends Pipe {
 
-    public Pipe1(double _length, double _diameter, int _grade, String _chemicalRes, int _quantity) {
-        super(_length,_diameter, _grade,0,"N","N", _chemicalRes, _quantity);
+    public Pipe1(double _length, double _diameter, int _grade, boolean _chemicalRes, int _quantity) {
+        super(_length, _diameter, _grade, 0, false, false, _chemicalRes, _quantity);
     }
 }
