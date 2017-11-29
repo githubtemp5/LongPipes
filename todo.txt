@@ -1,0 +1,15 @@
+TODO
+
+commenting for all code 
+
+fix GUI
+
+change some method names(Maybe)
+
+label names double check
+
+check abstract thing
+
+to be continued
+
+no major problems, we have a working model
