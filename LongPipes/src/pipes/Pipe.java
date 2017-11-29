@@ -14,7 +14,7 @@ public abstract class Pipe {
     protected boolean chemicalResistance;   //Chemical Resistance
     protected int pipeColourCount;
     protected int pipeQuantity;
-    public static double[] costByGrade = new double[]{0.4, 0.6, 0.75, 0.8, 0.95};
+    public static final double[] costByGrade = new double[]{0.4, 0.6, 0.75, 0.8, 0.95};
 
     /**
      * Constructor of Class Pipe
@@ -45,9 +45,13 @@ public abstract class Pipe {
     public double getPrice() {
         double finalCost = 0;
         double baseCost;
+        double outerVolume;
+        double innerVolume;
         //costByGrade[grade - 1] * inches;
         //2 *pi* r(h+r)
-        baseCost = Math.PI * Math.pow(pipeDiameter / 2, 2) * pipeLength * Pipe.costByGrade[pipeGrade - 1];  //base cost
+        outerVolume = Math.PI * Math.pow(pipeDiameter / 2, 2) *39.37* pipeLength;  //base cost
+        innerVolume = Math.PI * Math.pow(pipeDiameter / 2*0.9, 2) *39.37* pipeLength;
+        baseCost = (outerVolume - innerVolume) *costByGrade[pipeGrade-1];
         finalCost += baseCost;
 
         if (pipeColourCount == 1) {     //If you have 1 colour
@@ -65,6 +69,7 @@ public abstract class Pipe {
         if (chemicalResistance == true) {   //If the chemicalResistance is applied
             finalCost += (baseCost * 0.14);
         }
+        finalCost *= pipeQuantity;
         finalCost = (double) Math.round(finalCost * 100) / 100;     //rounding numbers to 2 d.p)
         return finalCost;
 
