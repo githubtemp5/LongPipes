@@ -67,16 +67,11 @@ public class Frame extends javax.swing.JFrame {
         chemicalBox = new javax.swing.JCheckBox();
         quantityBox = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        lengthLabel = new javax.swing.JLabel();
-        diameterLabel = new javax.swing.JLabel();
-        gradeLabel = new javax.swing.JLabel();
-        colourLabel = new javax.swing.JLabel();
-        quantityLabel = new javax.swing.JLabel();
-        totalLabel = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         pipePrice = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        errorLabel = new javax.swing.JLabel();
 
         jLabel6.setText("jLabel6");
 
@@ -120,6 +115,11 @@ public class Frame extends javax.swing.JFrame {
         lengthBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 lengthBoxFocusLost(evt);
+            }
+        });
+        lengthBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lengthBoxActionPerformed(evt);
             }
         });
 
@@ -184,13 +184,14 @@ public class Frame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        errorLabel.setText("1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,49 +215,38 @@ public class Frame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(chemicalBox)
-                                    .addComponent(reinforceBox)
-                                    .addComponent(quantityBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(quantityBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(reinforceBox)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                                        .addComponent(errorLabel))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(138, 138, 138)
-                                        .addComponent(lengthLabel))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lengthBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addGap(18, 18, 18)
+                                .addComponent(lengthBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(83, 83, 83))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addComponent(pipeSubmit))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton2)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(pipePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(17, 17, 17))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(diameterBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(67, 67, 67)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(gradeLabel)
-                                    .addComponent(diameterLabel)
-                                    .addComponent(colourLabel))
-                                .addGap(53, 53, 53))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(totalLabel)
-                                    .addComponent(quantityLabel))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(66, 66, 66)
+                                        .addComponent(pipeSubmit))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(120, 120, 120)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButton2)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(pipePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(17, 17, 17))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(diameterBox, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
@@ -269,35 +259,35 @@ public class Frame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lengthLabel)
-                        .addGap(18, 18, 18)
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(lengthBox, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(diameterLabel)
                             .addComponent(diameterBox, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(gradeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(gradeLabel))
+                            .addComponent(gradeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(colourBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(colourLabel))
+                            .addComponent(colourBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(insulationBox))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(reinforceBox))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(reinforceBox)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(errorLabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -305,9 +295,7 @@ public class Frame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(quantityBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(quantityLabel)
-                            .addComponent(totalLabel))
+                            .addComponent(quantityBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
@@ -340,14 +328,17 @@ public class Frame extends javax.swing.JFrame {
 
     private void pipeSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSubmitActionPerformed
         try {
-            checkPipe();
+            if(checkBool()){
+            checkPipe();    
             DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
             df.addRow(new String[]{pipeGrade + "", pipeColour + "", String.valueOf(innerInsulation), String.valueOf(outerReinforcement), String.valueOf(chemicalResistance), pipeArray.get(counter).getPrice() + ""});
             totalPrice += pipeArray.get(counter).getPrice();
             pipePrice.setText("£" + Math.round(totalPrice * 100.0) / 100.0);
             counter++;
+            errorLabel.setText("");
+            }
         } catch (Exception e) {
-            System.out.println("failed");
+            errorLabel.setText("failed");
         }
 
     }//GEN-LAST:event_pipeSubmitActionPerformed
@@ -365,7 +356,7 @@ public class Frame extends javax.swing.JFrame {
 
         input = gradeBox.getSelectedIndex();
         if (input == 0) {
-            gradeLabel.setText("Select a grade.");
+            errorLabel.setText("Select a grade.");
         } else {
             pipeGrade = input;
         }
@@ -373,35 +364,37 @@ public class Frame extends javax.swing.JFrame {
 
     private void lengthBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lengthBoxFocusLost
         double input;
-        lengthLabel.setText("");
+        pipeLength = 0;
+        errorLabel.setText("");
         try {
             input = Double.parseDouble(lengthBox.getText());
             if (input > 0 && input <= 6) {
                 pipeLength = input;
             } else {
                 lengthBox.setText("");
-                lengthLabel.setText("Enter number between 0 and 6");
+                errorLabel.setText("Enter number between 0 and 6");
             }
         } catch (Exception e) {
             lengthBox.setText("");
-            lengthLabel.setText("Failed");
+            errorLabel.setText("Please enter a number");
         }
     }//GEN-LAST:event_lengthBoxFocusLost
 
     private void diameterBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_diameterBoxFocusLost
         double input;
-        diameterLabel.setText("");
+        pipeDiameter = 0;
+        errorLabel.setText("");
         try {
             input = Double.parseDouble(diameterBox.getText());
             if (input > 0 && input <= 50) {
                 pipeDiameter = input;
             } else {
                 diameterBox.setText("");
-                diameterLabel.setText("Enter number between 0 and 50");
+                errorLabel.setText("Enter number between 0 and 50");
             }
         } catch (Exception e) {
             diameterBox.setText("");
-            diameterLabel.setText("Failed");
+            errorLabel.setText("Please enter a number");
         }
     }//GEN-LAST:event_diameterBoxFocusLost
 
@@ -410,7 +403,7 @@ public class Frame extends javax.swing.JFrame {
 
         input = colourBox.getSelectedIndex();
         if (input == 0) {
-            colourLabel.setText("invalid.");
+            errorLabel.setText("Please select a colo");
         } else {
             pipeColour = input - 1;
         }
@@ -442,19 +435,25 @@ public class Frame extends javax.swing.JFrame {
 
     private void quantityBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quantityBoxFocusLost
         int input;
-        quantityLabel.setText("");
+        pipeQuantity = 0;
+        errorLabel.setText("");
+        
         try {
             input = parseInt(quantityBox.getText());
             if (input > 0 && input <= 50) {
                 pipeQuantity = input;
             } else {
                 quantityBox.setText("");
-                quantityLabel.setText("Enter a quantity between 1 and 50");
+                errorLabel.setText("Enter a quantity between 1 and 50");
             }
         } catch (Exception e) {
-            quantityLabel.setText("Failed");
+            errorLabel.setText("Failed");
         }
     }//GEN-LAST:event_quantityBoxFocusLost
+
+    private void lengthBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lengthBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lengthBoxActionPerformed
 
     public boolean checkPipe() {
         boolean check = false;
@@ -491,7 +490,19 @@ public class Frame extends javax.swing.JFrame {
         }
         return check;
     }
-
+    
+    public boolean checkBool(){
+        if (pipeLength <= 0 || pipeLength > 6) {
+            return false;
+        }
+        else if (pipeDiameter <= 0 || pipeDiameter > 50) {
+            return false;
+        }
+        else if (pipeQuantity <= 0 || pipeQuantity > 50) {
+            return false;
+        }
+        return true;
+    }
     /**
      * @param args the command line arguments
      */
@@ -530,11 +541,9 @@ public class Frame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chemicalBox;
     private javax.swing.JComboBox<String> colourBox;
-    private javax.swing.JLabel colourLabel;
     private javax.swing.JTextField diameterBox;
-    private javax.swing.JLabel diameterLabel;
+    private javax.swing.JLabel errorLabel;
     private javax.swing.JComboBox<String> gradeBox;
-    private javax.swing.JLabel gradeLabel;
     private javax.swing.JCheckBox insulationBox;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -554,12 +563,9 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField lengthBox;
-    private javax.swing.JLabel lengthLabel;
     private javax.swing.JLabel pipePrice;
     private javax.swing.JButton pipeSubmit;
     private javax.swing.JTextField quantityBox;
-    private javax.swing.JLabel quantityLabel;
     private javax.swing.JCheckBox reinforceBox;
-    private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 }
