@@ -60,13 +60,13 @@ public abstract class Pipe {
         if (pipeColourCount == 2) {     //If you have two colours
             finalCost += (baseCost * 0.16);
         }
-        if (innerInsulation == true) {      //If the inner insulation is applied
+        if (innerInsulation) {      //If the inner insulation is applied
             finalCost += (baseCost * 0.13);
         }
-        if (outerReinforcement == true) {   //If the outer reinforcement is applied
+        if (outerReinforcement) {   //If the outer reinforcement is applied
             finalCost += (baseCost * 0.17);
         }
-        if (chemicalResistance == true) {   //If the chemicalResistance is applied
+        if (chemicalResistance) {   //If the chemicalResistance is applied
             finalCost += (baseCost * 0.14);
         }
         finalCost *= pipeQuantity;
