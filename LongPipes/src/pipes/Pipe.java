@@ -49,9 +49,9 @@ public abstract class Pipe {
         double innerVolume;
         //costByGrade[grade - 1] * inches;
         //2 *pi* r^2 * h
-        outerVolume = Math.PI * Math.pow(pipeDiameter / 2, 2) *39.37* pipeLength;  //base cost
-        innerVolume = Math.PI * Math.pow(pipeDiameter / 2*0.9, 2) *39.37* pipeLength;
-        baseCost = (outerVolume - innerVolume) *costByGrade[pipeGrade-1];
+        outerVolume = Math.PI * Math.pow(pipeDiameter / 2, 2) *39.37* pipeLength;   //volume of the full cylinder
+        innerVolume = Math.PI * Math.pow(pipeDiameter / 2*0.9, 2) *39.37* pipeLength;   //volume of the inner cylinder
+        baseCost = (outerVolume - innerVolume) *costByGrade[pipeGrade-1];       //base Cost
         finalCost += baseCost;
 
         if (pipeColourCount == 1) {     //If you have 1 colour
