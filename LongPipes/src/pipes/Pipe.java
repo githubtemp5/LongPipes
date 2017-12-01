@@ -48,7 +48,7 @@ public abstract class Pipe {
         double outerVolume;
         double innerVolume;
         //costByGrade[grade - 1] * inches;
-        //2 *pi* r(h+r)
+        //2 *pi* r^2 * h
         outerVolume = Math.PI * Math.pow(pipeDiameter / 2, 2) *39.37* pipeLength;  //base cost
         innerVolume = Math.PI * Math.pow(pipeDiameter / 2*0.9, 2) *39.37* pipeLength;
         baseCost = (outerVolume - innerVolume) *costByGrade[pipeGrade-1];
