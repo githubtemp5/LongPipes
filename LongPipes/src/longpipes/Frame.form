@@ -232,7 +232,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pipe Colours:"/>
+            <Property name="text" type="java.lang.String" value="Pipe Colour(s):"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
@@ -274,6 +274,7 @@
         <Component class="javax.swing.JTextField" name="lengthBox">
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="lengthBoxFocusLost"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lengthBoxActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="diameterBox">
@@ -284,13 +285,12 @@
         <Component class="javax.swing.JComboBox" name="gradeBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="..."/>
-                <StringItem index="1" value="1"/>
-                <StringItem index="2" value="2"/>
-                <StringItem index="3" value="3"/>
-                <StringItem index="4" value="4"/>
-                <StringItem index="5" value="5"/>
+              <StringArray count="5">
+                <StringItem index="0" value="1"/>
+                <StringItem index="1" value="2"/>
+                <StringItem index="2" value="3"/>
+                <StringItem index="3" value="4"/>
+                <StringItem index="4" value="5"/>
               </StringArray>
             </Property>
           </Properties>
@@ -304,11 +304,10 @@
         <Component class="javax.swing.JComboBox" name="colourBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="..."/>
-                <StringItem index="1" value="0"/>
-                <StringItem index="2" value="1"/>
-                <StringItem index="3" value="2"/>
+              <StringArray count="3">
+                <StringItem index="0" value="0"/>
+                <StringItem index="1" value="1"/>
+                <StringItem index="2" value="2"/>
               </StringArray>
             </Property>
           </Properties>

@@ -12,17 +12,12 @@ import pipes.*;
  */
 public class Frame extends javax.swing.JFrame {
 
-    private double pipeLength;
-    private double pipeDiameter;
-    private int pipeGrade;
-    private int pipeColour;
-    private boolean innerInsulation;
-    private boolean outerReinforcement;
-    private boolean chemicalResistance;
-    private int pipeQuantity;
     private ArrayList<Pipe> pipeArray = new ArrayList<Pipe>();
     private int counter = 0;
     private double totalPrice = 0;
+    private boolean lengthBoxError = false;
+    private boolean diameterBoxError = false;
+    private boolean quantityBoxError = false;
     private DefaultTableModel df;
 
     /**
@@ -86,7 +81,7 @@ public class Frame extends javax.swing.JFrame {
 
         jLabel4.setText("Pipe Grade:");
 
-        jLabel5.setText("Pipe Colours:");
+        jLabel5.setText("Pipe Colour(s):");
 
         jLabel7.setText("Pipe Insulation?");
 
@@ -115,6 +110,11 @@ public class Frame extends javax.swing.JFrame {
                 lengthBoxFocusLost(evt);
             }
         });
+        lengthBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lengthBoxActionPerformed(evt);
+            }
+        });
 
         diameterBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -122,14 +122,14 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        gradeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "1", "2", "3", "4", "5" }));
+        gradeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
         gradeBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gradeBoxActionPerformed(evt);
             }
         });
 
-        colourBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "0", "1", "2" }));
+        colourBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2" }));
         colourBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colourBoxActionPerformed(evt);
@@ -329,20 +329,29 @@ public class Frame extends javax.swing.JFrame {
 
     private void pipeSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSubmitActionPerformed
         try {
+
             if (pipeDimensionIsValid()) {
-                if (pipeIsCreated()) {
-                    df.addRow(new Object[]{pipeGrade , pipeColour , innerInsulation, outerReinforcement, chemicalResistance, pipeArray.get(counter).getPrice()});
+
+                double pipeLength = Double.parseDouble(lengthBox.getText());
+                double pipeDiameter = Double.parseDouble(diameterBox.getText());
+                int pipeQuantity = Integer.parseInt(quantityBox.getText());
+                int pipeGrade = Integer.parseInt(gradeBox.getSelectedItem().toString());
+                int pipeColour = colourBox.getSelectedIndex();
+                boolean innerInsulation = insulationBox.isSelected();
+                boolean outerReinforcement = reinforceBox.isSelected();
+                boolean chemicalResistance = chemicalBox.isSelected();
+                if (pipeIsCreated(pipeLength, pipeDiameter, pipeGrade, pipeColour, innerInsulation, outerReinforcement, chemicalResistance, pipeQuantity)) {
+                    df.addRow(new Object[]{pipeGrade, pipeColour, innerInsulation, outerReinforcement, chemicalResistance, pipeArray.get(counter).getPrice()});
                     totalPrice += pipeArray.get(counter).getPrice();
                     pipePrice.setText("£" + Math.round(totalPrice * 100.0) / 100.0);
                     counter++;
                     errorLabel.setText("");
+                } else {
+                    errorLabel.setText("Invalid Pipe Dimensions");
+
                 }
-                else{
-                errorLabel.setText("Invalid Pipe Dimensions");
-                
             }
-            }
-            
+
         } catch (Exception e) {
             errorLabel.setText("failed");
         }
@@ -355,106 +364,88 @@ public class Frame extends javax.swing.JFrame {
 
     private void gradeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeBoxActionPerformed
 
-        int input;
-
-        input = gradeBox.getSelectedIndex();
-        if (input == 0) {
-            errorLabel.setText("Select a grade.");
-        } else {
-            pipeGrade = input;
-        }
     }//GEN-LAST:event_gradeBoxActionPerformed
 
     private void lengthBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lengthBoxFocusLost
         double input;
-        pipeLength = 0;
+
         errorLabel.setText("");
         try {
             input = Double.parseDouble(lengthBox.getText());
             if (input > 0 && input <= 6) {
-                pipeLength = input;
+                lengthBoxError = false;
             } else {
                 lengthBox.setText("");
                 errorLabel.setText("The pipe length must be between 0 and 6");
+                lengthBoxError = true;
             }
         } catch (Exception e) {
+            lengthBoxError = true;
             lengthBox.setText("");
             errorLabel.setText("Please enter a number");
+
         }
     }//GEN-LAST:event_lengthBoxFocusLost
 
     private void diameterBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_diameterBoxFocusLost
         double input;
-        pipeDiameter = 0;
         errorLabel.setText("");
         try {
             input = Double.parseDouble(diameterBox.getText());
             if (input > 0 && input <= 50) {
-                pipeDiameter = input;
+                diameterBoxError = false;
             } else {
+                diameterBoxError = true;
                 diameterBox.setText("");
                 errorLabel.setText("Enter number between 0 and 50");
             }
         } catch (Exception e) {
+            diameterBoxError = true;
             diameterBox.setText("");
             errorLabel.setText("Please enter a number");
         }
     }//GEN-LAST:event_diameterBoxFocusLost
 
     private void colourBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colourBoxActionPerformed
-        int input;
 
-        input = colourBox.getSelectedIndex();
-        if (input == 0) {
-            errorLabel.setText("Please select a colo");
-        } else {
-            pipeColour = input - 1;
-        }
     }//GEN-LAST:event_colourBoxActionPerformed
 
     private void insulationBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insulationBoxActionPerformed
-        if (insulationBox.isSelected()) {
-            innerInsulation = true;
-        } else {
-            innerInsulation = false;
-        }
+
     }//GEN-LAST:event_insulationBoxActionPerformed
 
     private void reinforceBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reinforceBoxActionPerformed
-        if (reinforceBox.isSelected()) {
-            outerReinforcement = true;
-        } else {
-            outerReinforcement = false;
-        }
+
     }//GEN-LAST:event_reinforceBoxActionPerformed
 
     private void chemicalBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chemicalBoxActionPerformed
-        if (chemicalBox.isSelected()) {
-            chemicalResistance = true;
-        } else {
-            chemicalResistance = false;
-        }
+
     }//GEN-LAST:event_chemicalBoxActionPerformed
 
     private void quantityBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quantityBoxFocusLost
         int input;
-        pipeQuantity = 0;
         errorLabel.setText("");
 
         try {
             input = parseInt(quantityBox.getText());
             if (input > 0 && input <= 50) {
-                pipeQuantity = input;
+                quantityBoxError = false;
             } else {
+                quantityBoxError = true;
                 quantityBox.setText("");
                 errorLabel.setText("The maximum order quantity is 50");
             }
         } catch (Exception e) {
+            quantityBoxError = true;
             errorLabel.setText("Failed");
         }
     }//GEN-LAST:event_quantityBoxFocusLost
 
-    public boolean pipeIsCreated() {
+    private void lengthBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lengthBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lengthBoxActionPerformed
+
+    public boolean pipeIsCreated(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColour, boolean innerInsulation, boolean outerReinforcement, boolean chemicalResistance, int pipeQuantity) {
         boolean check = false;
         if (!innerInsulation && !outerReinforcement) {
             //Pipe1
@@ -491,14 +482,7 @@ public class Frame extends javax.swing.JFrame {
     }
 
     public boolean pipeDimensionIsValid() {
-        if (pipeLength <= 0 || pipeLength > 6) {
-            return false;
-        } else if (pipeDiameter <= 0 || pipeDiameter > 50) {
-            return false;
-        } else if (pipeQuantity <= 0 || pipeQuantity > 50) {
-            return false;
-        }
-        return true;
+        return !lengthBoxError && !diameterBoxError && !quantityBoxError;
     }
 
     /**
