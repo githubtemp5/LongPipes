@@ -53,7 +53,7 @@ public class Main extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         pipeSubmit = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        quit = new javax.swing.JButton();
         lengthBox = new javax.swing.JTextField();
         diameterBox = new javax.swing.JTextField();
         gradeBox = new javax.swing.JComboBox<>();
@@ -68,7 +68,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         resultTable = new javax.swing.JTable();
         errorLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        pipeRemoval = new javax.swing.JButton();
 
         jLabel6.setText("jLabel6");
 
@@ -103,21 +103,16 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Quit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        quit.setText("Quit");
+        quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                quitActionPerformed(evt);
             }
         });
 
         lengthBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 lengthBoxFocusLost(evt);
-            }
-        });
-        lengthBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lengthBoxActionPerformed(evt);
             }
         });
 
@@ -128,36 +123,8 @@ public class Main extends javax.swing.JFrame {
         });
 
         gradeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
-        gradeBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gradeBoxActionPerformed(evt);
-            }
-        });
 
         colourBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2" }));
-        colourBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                colourBoxActionPerformed(evt);
-            }
-        });
-
-        insulationBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insulationBoxActionPerformed(evt);
-            }
-        });
-
-        reinforceBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reinforceBoxActionPerformed(evt);
-            }
-        });
-
-        chemicalBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chemicalBoxActionPerformed(evt);
-            }
-        });
 
         quantityBox.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -172,14 +139,14 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Grade", "Colour(s)", "Inner Insulation", "Outer Reinforcement", "Chemical Resistance", "Price", "null"
+                "Grade", "Colour(s)", "Inner Insulation", "Outer Reinforcement", "Chemical Resistance", "Price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -203,10 +170,10 @@ public class Main extends javax.swing.JFrame {
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
-        jButton1.setText("Remove Order");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pipeRemoval.setText("Remove Order");
+        pipeRemoval.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                pipeRemovalActionPerformed(evt);
             }
         });
 
@@ -255,13 +222,13 @@ public class Main extends javax.swing.JFrame {
                                         .addGap(49, 49, 49)
                                         .addComponent(pipeSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton1)
+                                        .addComponent(pipeRemoval)
                                         .addGap(35, 35, 35)))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(625, 625, 625)
-                                .addComponent(jButton2)))))
+                                .addComponent(quit)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -312,14 +279,14 @@ public class Main extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(pipeSubmit)
-                            .addComponent(jButton1))
+                            .addComponent(pipeRemoval))
                         .addGap(38, 38, 38)
                         .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(quit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -361,26 +328,6 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_quantityBoxFocusLost
 
-    private void chemicalBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chemicalBoxActionPerformed
-
-    }//GEN-LAST:event_chemicalBoxActionPerformed
-
-    private void reinforceBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reinforceBoxActionPerformed
-
-    }//GEN-LAST:event_reinforceBoxActionPerformed
-
-    private void insulationBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insulationBoxActionPerformed
-
-    }//GEN-LAST:event_insulationBoxActionPerformed
-
-    private void colourBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colourBoxActionPerformed
-
-    }//GEN-LAST:event_colourBoxActionPerformed
-
-    private void gradeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gradeBoxActionPerformed
-
-    }//GEN-LAST:event_gradeBoxActionPerformed
-
     private void diameterBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_diameterBoxFocusLost
         double input;
         errorLabel.setText("");
@@ -399,10 +346,6 @@ public class Main extends javax.swing.JFrame {
             errorLabel.setText("Please enter a number");
         }
     }//GEN-LAST:event_diameterBoxFocusLost
-
-    private void lengthBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lengthBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lengthBoxActionPerformed
 
     private void lengthBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lengthBoxFocusLost
         double input;
@@ -423,12 +366,11 @@ public class Main extends javax.swing.JFrame {
             errorLabel.setText("Please enter a number");
 
         }
-        int counter = 0;
     }//GEN-LAST:event_lengthBoxFocusLost
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void quitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_quitActionPerformed
 
     private void pipeSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSubmitActionPerformed
         try {
@@ -445,8 +387,7 @@ public class Main extends javax.swing.JFrame {
                 boolean chemicalResistance = chemicalBox.isSelected();
 
                 if (pipeIsCreated(pipeLength, pipeDiameter, pipeGrade, pipeColour, innerInsulation, outerReinforcement, chemicalResistance, pipeQuantity)) {
-                    df.addRow(new Object[]{pipeGrade, pipeColour, String.valueOf(innerInsulation), String.valueOf(outerReinforcement), String.valueOf(chemicalResistance), twoDP.format(pipeArray.get(pipeArray.size() - 1).getPrice()), counter + ""});
-                    counter++;
+                    df.addRow(new Object[]{pipeGrade, pipeColour, String.valueOf(innerInsulation), String.valueOf(outerReinforcement), String.valueOf(chemicalResistance), twoDP.format(pipeArray.get(pipeArray.size() - 1).getPrice())});
                     totalPrice += pipeArray.get(pipeArray.size() - 1).getPrice();
                     updatePrice();
                     errorLabel.setText("");
@@ -460,7 +401,7 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pipeSubmitActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void pipeRemovalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeRemovalActionPerformed
         if (resultTable.getSelectedRowCount() > 0) {
 
             int rows[] = resultTable.getSelectedRows();
@@ -487,7 +428,7 @@ public class Main extends javax.swing.JFrame {
             updatePrice();
 
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_pipeRemovalActionPerformed
 
     public boolean pipeIsCreated(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColour, boolean innerInsulation, boolean outerReinforcement, boolean chemicalResistance, int pipeQuantity) {
         boolean check = false;
@@ -580,8 +521,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel errorLabel;
     private javax.swing.JComboBox<String> gradeBox;
     private javax.swing.JCheckBox insulationBox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -599,8 +538,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField lengthBox;
     private javax.swing.JLabel pipePrice;
+    private javax.swing.JButton pipeRemoval;
     private javax.swing.JButton pipeSubmit;
     private javax.swing.JTextField quantityBox;
+    private javax.swing.JButton quit;
     private javax.swing.JCheckBox reinforceBox;
     private javax.swing.JTable resultTable;
     // End of variables declaration//GEN-END:variables
