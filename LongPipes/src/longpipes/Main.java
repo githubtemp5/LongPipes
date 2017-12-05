@@ -14,16 +14,16 @@ import static java.lang.Integer.parseInt;
  */
 public class Main extends javax.swing.JFrame {
 
-    private ArrayList<Pipe> pipeArray = new ArrayList<Pipe>();
-    private double totalPrice = 0;
-    private boolean lengthBoxError = false;
-    private boolean diameterBoxError = false;
-    private boolean quantityBoxError = false;
+    private ArrayList<Pipe> pipeArray = new ArrayList<Pipe>();      //stores current pipe orders
+    private double totalPrice = 0;                                  //total price of all pipes
+    private boolean lengthBoxError = false;                         //if the value in the lengthBox is invalid this is set to true
+    private boolean diameterBoxError = false;                       //invalid value in diameterBox makes this true
+    private boolean quantityBoxError = false;                       //invalid quantity value makes this true
     private DefaultTableModel df;
-    private NumberFormat twoDP = NumberFormat.getCurrencyInstance();
+    private NumberFormat twoDP = NumberFormat.getCurrencyInstance();    //used to change a number to a 2 d.p price String
 
     /**
-     * Creates new form Frame
+     * Creates new form Frame initialises the GUI
      */
     public Main() {
         initComponents();
@@ -333,51 +333,46 @@ public class Main extends javax.swing.JFrame {
             int rows[] = resultTable.getSelectedRows();
             for (int j : rows) {
             }
-            double tempPrice = 0;
+
             ArrayList<Pipe> pipesToRemove = new ArrayList<Pipe>();
             for (int i : rows) {
-                tempPrice += pipeArray.get(i).getPrice();
                 pipesToRemove.add(pipeArray.get(i));
-
             }
-
+            //deleting the pipes to be removed from the resultTable
             for (int n = rows.length - 1; n >= 0; n--) {
                 df.removeRow(rows[n]);
             }
-
+            //removing the pipe from the array
             for (Pipe p : pipesToRemove) {
                 pipeArray.remove(p);
             }
-            totalPrice -= tempPrice;
+
             updatePrice();
 
         }
     }//GEN-LAST:event_pipeRemovalActionPerformed
 
     private void resultTableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_resultTableKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {       //delete rows from resultTable when delete key is pressed
             if (resultTable.getSelectedRowCount() > 0) {
 
                 int rows[] = resultTable.getSelectedRows();
                 for (int j : rows) {
                 }
 
-                double tempPrice = 0;
                 ArrayList<Pipe> pipesToRemove = new ArrayList<Pipe>();
                 for (int i : rows) {
-                    tempPrice += pipeArray.get(i).getPrice();
                     pipesToRemove.add(pipeArray.get(i));
-
                 }
-
+                //deleting the pipes to be removed from the resultTable
                 for (int n = rows.length - 1; n >= 0; n--) {
                     df.removeRow(rows[n]);
                 }
-
+                //removing the pipe from the array
                 for (Pipe p : pipesToRemove) {
                     pipeArray.remove(p);
                 }
-                totalPrice -= tempPrice;
+
                 updatePrice();
 
             }
@@ -386,18 +381,18 @@ public class Main extends javax.swing.JFrame {
 
     private void quantityBoxFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_quantityBoxFocusLost
         int input;
-        errorLabel.setText("");
+        errorLabel.setText("");     //initialises the error label to be empty
 
         try {
             input = parseInt(quantityBox.getText());
-            if (input > 0 && input <= 50) {
+            if (input > 0 && input <= 50) {     //50 is the maximum quantity
                 quantityBoxError = false;
             } else {
                 quantityBoxError = true;
                 quantityBox.setText("");
                 errorLabel.setText("The maximum order quantity is 50");
             }
-        } catch (Exception e) {
+        } catch (Exception e) {             //string or invalid type errors handled here
             quantityBoxError = true;
             errorLabel.setText("Quantity must be a non-decimal number");
         }
@@ -451,7 +446,7 @@ public class Main extends javax.swing.JFrame {
         try {
 
             if (pipeDimensionIsValid()) {       //if pipe length, diameter and quantity are valid then only assignment of value is possible.
-                //assigning values to the variables
+                //assigning values to the variables only after the values are valid
                 double pipeLength = Double.parseDouble(lengthBox.getText());
                 double pipeDiameter = Double.parseDouble(diameterBox.getText());
                 int pipeQuantity = Integer.parseInt(quantityBox.getText());
@@ -476,16 +471,19 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_pipeSubmitActionPerformed
 
     /**
-     *
-     * @param pipeLength
-     * @param pipeDiameter
-     * @param pipeGrade
-     * @param pipeColour
-     * @param innerInsulation
-     * @param outerReinforcement
-     * @param chemicalResistance
-     * @param pipeQuantity
-     * @return whether the pipe type is valid
+     *  this method checks whether the specification provided by the user matches to a valid pipe type or not
+     * @param pipeLength    length of the pipe to be created
+     * @param pipeDiameter  diameter of the pipe
+     * @param pipeGrade     grade of the pipe   
+     * @param pipeColour    colour of the pipe 
+     * @param innerInsulation   true or false on whether inner insulation is present or not
+     * @param outerReinforcement    whether outer reinforcement is present
+     * @param chemicalResistance    whether chemical resistance is present
+     * @param pipeQuantity          the quantity of the pipe
+     * @return if the user specification matches one of the valid pipe types then returns true otherwise false
+     * 
+     * check boolean is set to false at the beginning, if it matches one of the pipes' criteria then it changes to true
+     * if pipe is valid, it is added to pipeArray ArrayList.
      */
     public boolean pipeIsCreated(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColour, boolean innerInsulation, boolean outerReinforcement, boolean chemicalResistance, int pipeQuantity) {
         boolean check = false;
@@ -533,19 +531,25 @@ public class Main extends javax.swing.JFrame {
     }
 
     /**
-     *
+     * adds up the price for all the pipes currently in the arraylist and sets it to totalPrice
+     * also sets the pipePrice label to the current total price 
      */
     public void updatePrice() {
         totalPrice = 0;
         for (Pipe p : pipeArray) {
             totalPrice += (double) Math.round(p.getPrice() * 100.0) / 100.0;
         }
-        pipePrice.setText(twoDP.format(totalPrice));
+        pipePrice.setText(twoDP.format(totalPrice));    //updates the pipePrice label
     }
-
-    private String booleanToYN(boolean b) {
+    
+    /**
+     * 
+     * @param input the boolean parameter
+     * @return if input is true 'Y' is returned otherwise 'N'
+     */
+    private String booleanToYN(boolean input) {
         String output = "";
-        if (b) {
+        if (input) {
             output = "Y";
         } else {
             output = "N";
