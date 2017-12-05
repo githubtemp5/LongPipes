@@ -17,7 +17,6 @@ import static java.lang.Integer.parseInt;
 public class Main extends javax.swing.JFrame {
 
     private ArrayList<Pipe> pipeArray = new ArrayList<Pipe>();
-    private int counter = 0;
     private double totalPrice = 0;
     private boolean lengthBoxError = false;
     private boolean diameterBoxError = false;
@@ -387,8 +386,8 @@ public class Main extends javax.swing.JFrame {
     private void pipeSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeSubmitActionPerformed
         try {
 
-            if (pipeDimensionIsValid()) {
-
+            if (pipeDimensionIsValid()) {       //if pipe length, diameter and quantity are valid then only assignment of value is possible.
+                //assigning values to the variables
                 double pipeLength = Double.parseDouble(lengthBox.getText());
                 double pipeDiameter = Double.parseDouble(diameterBox.getText());
                 int pipeQuantity = Integer.parseInt(quantityBox.getText());
@@ -398,10 +397,9 @@ public class Main extends javax.swing.JFrame {
                 boolean outerReinforcement = reinforceBox.isSelected();
                 boolean chemicalResistance = chemicalBox.isSelected();
 
-                if (pipeIsCreated(pipeLength, pipeDiameter, pipeGrade, pipeColour, innerInsulation, outerReinforcement, chemicalResistance, pipeQuantity)) {
-                    df.addRow(new Object[]{pipeGrade, pipeColour, String.valueOf(innerInsulation), String.valueOf(outerReinforcement), String.valueOf(chemicalResistance), twoDP.format(pipeArray.get(pipeArray.size() - 1).getPrice())});
-                    totalPrice += pipeArray.get(pipeArray.size() - 1).getPrice();
-                    updatePrice();
+                if (pipeIsCreated(pipeLength, pipeDiameter, pipeGrade, pipeColour, innerInsulation, outerReinforcement, chemicalResistance, pipeQuantity)) { //if the pipe is created the method returns true otherwise false
+                    df.addRow(new Object[]{pipeGrade, pipeColour, String.valueOf(innerInsulation), String.valueOf(outerReinforcement), String.valueOf(chemicalResistance), twoDP.format(pipeArray.get(pipeArray.size() - 1).getPrice())});  //adds the pipe as a row in resultTable
+                    updatePrice();     //adds in the price of current pipe to total price and updates the price
                     errorLabel.setText("");
                 } else {
                     errorLabel.setText("Invalid Pipe specification");
@@ -474,6 +472,18 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_resultTableKeyPressed
 
+    /**
+     *
+     * @param pipeLength
+     * @param pipeDiameter
+     * @param pipeGrade
+     * @param pipeColour
+     * @param innerInsulation
+     * @param outerReinforcement
+     * @param chemicalResistance
+     * @param pipeQuantity
+     * @return whether the pipe type is valid
+     */
     public boolean pipeIsCreated(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColour, boolean innerInsulation, boolean outerReinforcement, boolean chemicalResistance, int pipeQuantity) {
         boolean check = false;
         if (!innerInsulation && !outerReinforcement) {
@@ -510,10 +520,17 @@ public class Main extends javax.swing.JFrame {
         return check;
     }
 
+    /**
+     *
+     * @return returns whether the length, diameter and quantity of the pipe is valid
+     */
     public boolean pipeDimensionIsValid() {
         return !lengthBoxError && !diameterBoxError && !quantityBoxError;
     }
 
+    /**
+     *
+     */
     public void updatePrice() {
         totalPrice = 0;
         for (Pipe p : pipeArray) {
