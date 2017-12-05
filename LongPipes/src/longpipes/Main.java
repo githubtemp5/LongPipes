@@ -26,13 +26,13 @@ public class Main extends javax.swing.JFrame {
      * 
      * Creates new form Frame initialises the GUI
      * 
-     * @pipeArray       stores current pipe orders
-     * @totalPrice      total price of all pipes
-     * @lengthBoxError  if the value in the lengthBox is invalid this is set to true
-     * @diameterBoxError invalid value in diameterBox makes this true
-     * @quantityErrorBox invalid quantity value makes this true
-     * @twoDP              used to change a number to a 2 d.p price String
-     * @df              defining the table model type
+     * pipeArray       stores current pipe orders
+     * totalPrice      total price of all pipes
+     * lengthBoxError  if the value in the lengthBox is invalid this is set to true
+     * diameterBoxError invalid value in diameterBox makes this true
+     * quantityErrorBox invalid quantity value makes this true
+     * twoDP              used to change a number to a 2 d.p price String
+     * df              defining the table model type
      */
     public Main() {
         pipeArray = new ArrayList<Pipe>();
