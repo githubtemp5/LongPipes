@@ -399,7 +399,7 @@ public class Main extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             quantityBoxError = true;
-            errorLabel.setText("Quantity must be a number");
+            errorLabel.setText("Quantity must be a non-decimal number");
         }
     }//GEN-LAST:event_quantityBoxFocusLost
 
