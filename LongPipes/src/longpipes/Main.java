@@ -83,6 +83,7 @@ public class Main extends javax.swing.JFrame {
         resultTable = new javax.swing.JTable();
         errorLabel = new javax.swing.JLabel();
         pipeRemoval = new javax.swing.JButton();
+        help = new javax.swing.JButton();
 
         jLabel6.setText("jLabel6");
 
@@ -205,6 +206,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        help.setText("Show product list");
+        help.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -212,7 +220,9 @@ public class Main extends javax.swing.JFrame {
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(help)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pipeRemoval)
                         .addGap(520, 520, 520)
                         .addComponent(quitButton))
@@ -317,7 +327,8 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(quitButton)
-                            .addComponent(pipeRemoval))))
+                            .addComponent(pipeRemoval)
+                            .addComponent(help))))
                 .addContainerGap())
         );
 
@@ -483,6 +494,11 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pipeSubmitActionPerformed
 
+    private void helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpActionPerformed
+        help matrix = new help();
+        matrix.createAndShowGUI();
+    }//GEN-LAST:event_helpActionPerformed
+
     /**
      *  this method checks whether the specification provided by the user matches to a valid pipe type or not
      * @param pipeLength    length of the pipe to be created
@@ -616,6 +632,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel errorLabel;
     private javax.swing.JComboBox<String> gradeBox;
     private javax.swing.JLabel gradeLabel;
+    private javax.swing.JButton help;
     private javax.swing.JLabel innerInsulation;
     private javax.swing.JCheckBox insulationBox;
     private javax.swing.JDesktopPane jDesktopPane1;
