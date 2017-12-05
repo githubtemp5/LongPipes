@@ -1,0 +1,11 @@
+ JDialog dialog = new JDialog();
+
+        JLabel label = new JLabel();
+        try {
+            label = new JLabel(new ImageIcon(ImageIO.read(getClass().getResourceAsStream("week2aa.png"))));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        dialog.add(label);
+        dialog.pack();
+        dialog.setVisible(true);
