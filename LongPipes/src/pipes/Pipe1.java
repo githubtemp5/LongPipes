@@ -7,7 +7,8 @@ package pipes;
 public class Pipe1 extends Pipe {
 
     /**
-     *
+     *Constructor for Pipe1
+     * 
      * @param _length input of pipe length
      * @param _diameter input of pipe diameter
      * @param _grade inputted pipe grade
