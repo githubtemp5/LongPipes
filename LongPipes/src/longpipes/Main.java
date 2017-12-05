@@ -14,20 +14,35 @@ import static java.lang.Integer.parseInt;
  */
 public class Main extends javax.swing.JFrame {
 
-    private ArrayList<Pipe> pipeArray = new ArrayList<Pipe>();      //stores current pipe orders
-    private double totalPrice = 0;                                  //total price of all pipes
-    private boolean lengthBoxError = false;                         //if the value in the lengthBox is invalid this is set to true
-    private boolean diameterBoxError = false;                       //invalid value in diameterBox makes this true
-    private boolean quantityBoxError = false;                       //invalid quantity value makes this true
+    private ArrayList<Pipe> pipeArray;      
+    private double totalPrice;                                  
+    private boolean lengthBoxError;                         
+    private boolean diameterBoxError;                       
+    private boolean quantityBoxError;                       
     private DefaultTableModel df;
-    private NumberFormat twoDP = NumberFormat.getCurrencyInstance();    //used to change a number to a 2 d.p price String
+    private NumberFormat twoDP;    
 
     /**
      * Constructor for the main class
      * 
      * Creates new form Frame initialises the GUI
+     * 
+     * @pipeArray       stores current pipe orders
+     * @totalPrice      total price of all pipes
+     * @lengthBoxError  if the value in the lengthBox is invalid this is set to true
+     * @diameterBoxError invalid value in diameterBox makes this true
+     * @quantityErrorBox invalid quantity value makes this true
+     * @twoDP              used to change a number to a 2 d.p price String
+     * @df              defining the table model type
      */
     public Main() {
+        pipeArray = new ArrayList<Pipe>();
+        totalPrice = 0;
+        lengthBoxError = false;
+        diameterBoxError = false;
+        quantityBoxError = false;
+        twoDP = NumberFormat.getCurrencyInstance();
+
         initComponents();
         df = (DefaultTableModel) resultTable.getModel();
     }
