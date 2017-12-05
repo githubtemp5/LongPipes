@@ -23,6 +23,8 @@ public class Main extends javax.swing.JFrame {
     private NumberFormat twoDP = NumberFormat.getCurrencyInstance();    //used to change a number to a 2 d.p price String
 
     /**
+     * Constructor for the main class
+     * 
      * Creates new form Frame initialises the GUI
      */
     public Main() {
