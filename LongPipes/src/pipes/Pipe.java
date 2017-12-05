@@ -14,7 +14,7 @@ public abstract class Pipe {
     protected boolean chemicalResistance;   //Chemical Resistance
     protected int pipeColourCount;
     protected int pipeQuantity;
-    public static final double[] costByGrade = new double[]{0.4, 0.6, 0.75, 0.8, 0.95};
+    public static final double[] costByGrade = new double[]{0.4, 0.6, 0.75, 0.8, 0.95};     //cost of pipe by grade so grade 1 =0.4 and so on
 
     /**
      * Constructor of Class Pipe
