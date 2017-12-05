@@ -1,6 +1,8 @@
 package longpipes;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import static java.awt.event.KeyEvent.VK_DELETE;
 import static java.lang.Integer.parseInt;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -74,6 +76,11 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
@@ -158,6 +165,11 @@ public class Main extends javax.swing.JFrame {
             }
         });
         resultTable.getTableHeader().setReorderingAllowed(false);
+        resultTable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                resultTableKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(resultTable);
         if (resultTable.getColumnModel().getColumnCount() > 0) {
             resultTable.getColumnModel().getColumn(0).setMinWidth(3);
@@ -406,12 +418,10 @@ public class Main extends javax.swing.JFrame {
 
             int rows[] = resultTable.getSelectedRows();
             for (int j : rows) {
-                System.out.println("j" + j);
             }
             long tempPrice = 0;
             ArrayList<Pipe> pipesToRemove = new ArrayList<Pipe>();
             for (int i : rows) {
-                System.out.println("i: " + i);
                 tempPrice += pipeArray.get(i).getPrice();
                 pipesToRemove.add(pipeArray.get(i));
 
@@ -429,6 +439,40 @@ public class Main extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_pipeRemovalActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+
+    }//GEN-LAST:event_formKeyPressed
+
+    private void resultTableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_resultTableKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            if (resultTable.getSelectedRowCount() > 0) {
+
+                int rows[] = resultTable.getSelectedRows();
+                for (int j : rows) {
+                }
+
+                long tempPrice = 0;
+                ArrayList<Pipe> pipesToRemove = new ArrayList<Pipe>();
+                for (int i : rows) {
+                    tempPrice += pipeArray.get(i).getPrice();
+                    pipesToRemove.add(pipeArray.get(i));
+
+                }
+
+                for (int n = rows.length - 1; n >= 0; n--) {
+                    df.removeRow(rows[n]);
+                }
+
+                for (Pipe p : pipesToRemove) {
+                    pipeArray.remove(p);
+                }
+                totalPrice -= tempPrice;
+                updatePrice();
+
+            }
+        }
+    }//GEN-LAST:event_resultTableKeyPressed
 
     public boolean pipeIsCreated(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColour, boolean innerInsulation, boolean outerReinforcement, boolean chemicalResistance, int pipeQuantity) {
         boolean check = false;
