@@ -45,13 +45,8 @@ public abstract class Pipe {
     public double getPrice() {
         double finalCost = 0;
         double baseCost;
-        double outerVolume;
-        double innerVolume;
-        //costByGrade[grade - 1] * inches;
-        //2 *pi* r^2 * h
-        outerVolume = Math.PI * Math.pow(pipeDiameter / 2, 2) *39.37* pipeLength;   //volume of the full cylinder
-        innerVolume = Math.PI * Math.pow(pipeDiameter / 2*0.9, 2) *39.37* pipeLength;   //volume of the inner cylinder
-        baseCost = (outerVolume - innerVolume) *costByGrade[pipeGrade-1];       //base Cost
+
+        baseCost = this.getVolume() * costByGrade[pipeGrade - 1];       //base Cost
         finalCost += baseCost;
 
         if (pipeColourCount == 1) {     //If you have 1 colour
@@ -75,4 +70,13 @@ public abstract class Pipe {
 
     }
 
+    private double getVolume() {
+        double outerVolume;
+        double innerVolume;
+
+        //2 *pi* r^2 * h
+        outerVolume = Math.PI * Math.pow(pipeDiameter / 2, 2) * 39.37 * pipeLength;   //volume of the full cylinder
+        innerVolume = Math.PI * Math.pow(pipeDiameter / 2 * 0.9, 2) * 39.37 * pipeLength;   //volume of the inner cylinder
+        return outerVolume - innerVolume;
+    }
 }
