@@ -42,11 +42,15 @@ public abstract class Pipe {
         pipeQuantity = _pipeQuantity;
     }
 
+    /**
+     *
+     * @return returns the price of the pipe taking quantity in account
+     */
     public double getPrice() {
         double finalCost = 0;
-        double baseCost;
+        double baseCost;        //cost of the pipe without additional layers
 
-        baseCost = this.getVolume() * costByGrade[pipeGrade - 1];       //base Cost
+        baseCost = this.getVolume() * costByGrade[pipeGrade - 1];       //volume * grade of the plastic
         finalCost += baseCost;
 
         if (pipeColourCount == 1) {     //If you have 1 colour
@@ -70,13 +74,17 @@ public abstract class Pipe {
 
     }
 
+    /**
+     *
+     * @return returns outervolume-innervolume
+     */
     private double getVolume() {
         double outerVolume;
         double innerVolume;
 
         //2 *pi* r^2 * h
-        outerVolume = Math.PI * Math.pow(pipeDiameter / 2, 2) * 39.37 * pipeLength;   //volume of the full cylinder
-        innerVolume = Math.PI * Math.pow(pipeDiameter / 2 * 0.9, 2) * 39.37 * pipeLength;   //volume of the inner cylinder
+        outerVolume = Math.PI * Math.pow(pipeDiameter / 2, 2) * 39.37 * pipeLength;   //volume of the full cylinder in 
+        innerVolume = Math.PI * Math.pow(pipeDiameter / 2 * 0.9, 2) * 39.37 * pipeLength;   //volume of the inner cylinder, 90% of the radius
         return outerVolume - innerVolume;
     }
 }
