@@ -119,14 +119,14 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Component id="mainScrollPane" alignment="0" min="-2" pref="742" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="errorLabel" min="-2" pref="515" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="pipePrice" min="-2" pref="102" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="pipePrice" min="-2" pref="155" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="mainScrollPane" min="-2" pref="742" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -137,17 +137,22 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="mainLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="pipePrice" max="32767" attributes="0"/>
-                              <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="errorLabel" min="-2" pref="14" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="pipePrice" max="32767" attributes="0"/>
+                                  <Component id="errorLabel" min="-2" pref="14" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -349,50 +354,65 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="resultTable">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="14" style="0"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="0">
+                  <Table columnCount="9" rowCount="0">
                     <Column editable="false" title="Grade" type="java.lang.Integer"/>
                     <Column editable="false" title="Colour(s)" type="java.lang.Integer"/>
-                    <Column editable="false" title="Inner Insulation" type="java.lang.String"/>
-                    <Column editable="false" title="Outer Reinforcement" type="java.lang.String"/>
-                    <Column editable="false" title="Chemical Resistance" type="java.lang.String"/>
+                    <Column editable="false" title="Length(m)" type="java.lang.Double"/>
+                    <Column editable="false" title="Diameter(in)" type="java.lang.Double"/>
+                    <Column editable="false" title="Insulation?" type="java.lang.String"/>
+                    <Column editable="false" title="Reinforcement" type="java.lang.String"/>
+                    <Column editable="false" title="Resistance?" type="java.lang.String"/>
                     <Column editable="false" title="Quantity" type="java.lang.Integer"/>
                     <Column editable="false" title="Price" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="3" prefWidth="3" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="3" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="5" prefWidth="3" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="3" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="27" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="5" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="22" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="27" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="28" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="28" resizable="false">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="false">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -418,7 +438,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="pipeRemoval">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Remove Order"/>
+            <Property name="text" type="java.lang.String" value="Remove Order(s)"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pipeRemovalActionPerformed"/>

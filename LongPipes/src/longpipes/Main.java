@@ -153,19 +153,20 @@ public class Main extends javax.swing.JFrame {
 
         totalPriceLabel.setText("Total Price:");
 
+        resultTable.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         resultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Grade", "Colour(s)", "Inner Insulation", "Outer Reinforcement", "Chemical Resistance", "Quantity", "Price"
+                "Grade", "Colour(s)", "Length(m)", "Diameter(in)", "Insulation?", "Reinforcement", "Resistance?", "Quantity", "Price"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -184,20 +185,29 @@ public class Main extends javax.swing.JFrame {
         });
         mainScrollPane.setViewportView(resultTable);
         if (resultTable.getColumnModel().getColumnCount() > 0) {
-            resultTable.getColumnModel().getColumn(0).setMinWidth(3);
+            resultTable.getColumnModel().getColumn(0).setResizable(false);
             resultTable.getColumnModel().getColumn(0).setPreferredWidth(3);
-            resultTable.getColumnModel().getColumn(1).setMinWidth(5);
+            resultTable.getColumnModel().getColumn(1).setResizable(false);
             resultTable.getColumnModel().getColumn(1).setPreferredWidth(3);
-            resultTable.getColumnModel().getColumn(2).setPreferredWidth(27);
-            resultTable.getColumnModel().getColumn(3).setPreferredWidth(40);
-            resultTable.getColumnModel().getColumn(4).setPreferredWidth(30);
-            resultTable.getColumnModel().getColumn(5).setPreferredWidth(28);
+            resultTable.getColumnModel().getColumn(2).setResizable(false);
+            resultTable.getColumnModel().getColumn(2).setPreferredWidth(5);
+            resultTable.getColumnModel().getColumn(3).setResizable(false);
+            resultTable.getColumnModel().getColumn(3).setPreferredWidth(22);
+            resultTable.getColumnModel().getColumn(4).setResizable(false);
+            resultTable.getColumnModel().getColumn(4).setPreferredWidth(27);
+            resultTable.getColumnModel().getColumn(5).setResizable(false);
+            resultTable.getColumnModel().getColumn(5).setPreferredWidth(40);
+            resultTable.getColumnModel().getColumn(6).setResizable(false);
             resultTable.getColumnModel().getColumn(6).setPreferredWidth(30);
+            resultTable.getColumnModel().getColumn(7).setResizable(false);
+            resultTable.getColumnModel().getColumn(7).setPreferredWidth(28);
+            resultTable.getColumnModel().getColumn(8).setResizable(false);
+            resultTable.getColumnModel().getColumn(8).setPreferredWidth(30);
         }
 
         errorLabel.setForeground(new java.awt.Color(255, 0, 0));
 
-        pipeRemoval.setText("Remove Order");
+        pipeRemoval.setText("Remove Order(s)");
         pipeRemoval.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pipeRemovalActionPerformed(evt);
@@ -261,28 +271,31 @@ public class Main extends javax.swing.JFrame {
                                                 .addGap(38, 38, 38)))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)))
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mainScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(mainPanelLayout.createSequentialGroup()
                                 .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(53, 53, 53)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(totalPriceLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pipePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(mainScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pipePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addComponent(mainLabel)
                         .addGap(2, 2, 2))
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pipePrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(totalPriceLabel)
-                            .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pipePrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(totalPriceLabel)
+                                .addGap(4, 4, 4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
@@ -350,7 +363,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     private void pipeRemovalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pipeRemovalActionPerformed
-        if (resultTable.getSelectedRowCount() > 0) {
+      errorLabel.setText("");
+        if (resultTable.getSelectedRowCount() > 0) {    //pressing the remove order button
 
             int rows[] = resultTable.getSelectedRows();
             for (int j : rows) {
@@ -371,6 +385,9 @@ public class Main extends javax.swing.JFrame {
 
             updatePrice();
 
+        }
+        else{
+            errorLabel.setText("Atleast one order has to be selected.");
         }
     }//GEN-LAST:event_pipeRemovalActionPerformed
 
@@ -480,7 +497,7 @@ public class Main extends javax.swing.JFrame {
                 boolean chemicalResistance = chemicalBox.isSelected();
 
                 if (pipeIsCreated(pipeLength, pipeDiameter, pipeGrade, pipeColour, innerInsulation, outerReinforcement, chemicalResistance, pipeQuantity)) { //if the pipe is created the method returns true otherwise false
-                    df.addRow(new Object[]{pipeGrade, pipeColour, booleanToYN(innerInsulation), booleanToYN(outerReinforcement), booleanToYN(chemicalResistance), pipeQuantity, twoDP.format(pipeArray.get(pipeArray.size() - 1).getPrice())});  //adds the pipe as a row in resultTable
+                    df.addRow(new Object[]{pipeGrade, pipeColour, pipeLength, pipeDiameter, booleanToYN(innerInsulation), booleanToYN(outerReinforcement), booleanToYN(chemicalResistance), pipeQuantity, twoDP.format(pipeArray.get(pipeArray.size() - 1).getPrice())});  //adds the pipe as a row in resultTable
                     updatePrice();     //adds in the price of current pipe to total price and updates the price
                     errorLabel.setText("");
                 } else {
@@ -583,9 +600,9 @@ public class Main extends javax.swing.JFrame {
     private String booleanToYN(boolean input) {
         String output = "";
         if (input) {
-            output = "Y";
+            output = "Yes";
         } else {
-            output = "N";
+            output = "No";
         }
         return output;
     }
