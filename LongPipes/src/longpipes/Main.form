@@ -64,70 +64,68 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <Component id="mainLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="pipeSubmit" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="diameterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lengthLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="gradeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="colourLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="innerInsulation" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="outerReinforcement" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chemicalResistanceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="quantityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="quantityBox" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
+                                      <Component id="diameterBox" alignment="1" min="-2" pref="96" max="-2" attributes="0"/>
+                                      <Component id="lengthBox" alignment="1" min="-2" pref="96" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="2" attributes="0">
+                                              <Component id="chemicalBox" alignment="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="reinforceBox" alignment="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="insulationBox" alignment="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="colourBox" alignment="2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="gradeBox" alignment="2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="help" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="pipeRemoval" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="520" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="547" max="-2" attributes="0"/>
                           <Component id="quitButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="mainLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="pipeSubmit" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="diameterLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lengthLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="gradeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="colourLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="innerInsulation" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="outerReinforcement" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="chemicalResistanceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="quantityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace pref="25" max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="quantityBox" alignment="1" min="-2" pref="93" max="-2" attributes="0"/>
-                                              <Component id="diameterBox" alignment="1" min="-2" pref="96" max="-2" attributes="0"/>
-                                              <Component id="lengthBox" alignment="1" min="-2" pref="96" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="1" attributes="0">
-                                                  <Group type="103" groupAlignment="2" attributes="0">
-                                                      <Component id="chemicalBox" alignment="2" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="reinforceBox" alignment="2" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="insulationBox" alignment="2" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="colourBox" alignment="2" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="gradeBox" alignment="2" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace pref="27" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="mainScrollPane" alignment="0" min="-2" pref="742" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="errorLabel" min="-2" pref="515" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="pipePrice" min="-2" pref="155" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Component id="mainScrollPane" alignment="0" min="-2" pref="742" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="errorLabel" min="-2" pref="515" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pipePrice" min="-2" pref="155" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -162,14 +160,14 @@
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lengthLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="lengthBox" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="diameterLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="diameterBox" min="-2" pref="22" max="-2" attributes="0"/>
+                              <Component id="lengthBox" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="diameterLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="diameterBox" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="gradeLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="gradeBox" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -285,7 +283,7 @@
         <Component class="javax.swing.JTextField" name="lengthBox">
           <Properties>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[6, 22]"/>
+              <Dimension value="[6, 25]"/>
             </Property>
           </Properties>
           <Events>
@@ -293,6 +291,11 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="diameterBox">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[6, 25]"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="diameterBoxFocusLost"/>
           </Events>
@@ -334,6 +337,11 @@
         <Component class="javax.swing.JCheckBox" name="chemicalBox">
         </Component>
         <Component class="javax.swing.JTextField" name="quantityBox">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[6, 25]"/>
+            </Property>
+          </Properties>
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="quantityBoxFocusLost"/>
           </Events>
