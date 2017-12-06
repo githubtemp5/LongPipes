@@ -13,26 +13,24 @@ import static java.lang.Integer.parseInt;
  */
 public class Main extends javax.swing.JFrame {
 
-    private ArrayList<Pipe> pipeArray;      
-    private double totalPrice;                                  
-    private boolean lengthBoxError;                         
-    private boolean diameterBoxError;                       
-    private boolean quantityBoxError;                       
+    private ArrayList<Pipe> pipeArray;
+    private double totalPrice;
+    private boolean lengthBoxError;
+    private boolean diameterBoxError;
+    private boolean quantityBoxError;
     private DefaultTableModel df;
-    private NumberFormat twoDP;    
+    private NumberFormat twoDP;
 
     /**
      * Constructor for the main class
-     * 
+     *
      * Creates new form Frame initialises the GUI
-     * 
-     * pipeArray       stores current pipe orders
-     * totalPrice      total price of all pipes
-     * lengthBoxError  if the value in the lengthBox is invalid this is set to true
-     * diameterBoxError invalid value in diameterBox makes this true
-     * quantityErrorBox invalid quantity value makes this true
-     * twoDP              used to change a number to a 2 d.p price String
-     * df              defining the table model type
+     *
+     * pipeArray stores current pipe orders totalPrice total price of all pipes
+     * lengthBoxError if the value in the lengthBox is invalid this is set to
+     * true diameterBoxError invalid value in diameterBox makes this true
+     * quantityErrorBox invalid quantity value makes this true twoDP used to
+     * change a number to a 2 d.p price String df defining the table model type
      */
     public Main() {
         pipeArray = new ArrayList<Pipe>();
@@ -264,8 +262,8 @@ public class Main extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)))
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(mainPanelLayout.createSequentialGroup()
-                                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(268, 268, 268)
+                                .addComponent(errorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
                                 .addComponent(totalPriceLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(pipePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -418,7 +416,8 @@ public class Main extends javax.swing.JFrame {
             }
         } catch (Exception e) {             //string or invalid type errors handled here
             quantityBoxError = true;
-            errorLabel.setText("Quantity must be a non-decimal number");
+            quantityBox.setText("");
+            errorLabel.setText("Quantity must be a non-decimal number less than 50");
         }
     }//GEN-LAST:event_quantityBoxFocusLost
 
@@ -500,19 +499,24 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_helpActionPerformed
 
     /**
-     *  this method checks whether the specification provided by the user matches to a valid pipe type or not
-     * @param pipeLength    length of the pipe to be created
-     * @param pipeDiameter  diameter of the pipe
-     * @param pipeGrade     grade of the pipe   
-     * @param pipeColour    colour of the pipe 
-     * @param innerInsulation   true or false on whether inner insulation is present or not
-     * @param outerReinforcement    whether outer reinforcement is present
-     * @param chemicalResistance    whether chemical resistance is present
-     * @param pipeQuantity          the quantity of the pipe
-     * @return if the user specification matches one of the valid pipe types then returns true otherwise false
-     * 
-     * check boolean is set to false at the beginning, if it matches one of the pipes' criteria then it changes to true
-     * if pipe is valid, it is added to pipeArray ArrayList.
+     * this method checks whether the specification provided by the user matches
+     * to a valid pipe type or not
+     *
+     * @param pipeLength length of the pipe to be created
+     * @param pipeDiameter diameter of the pipe
+     * @param pipeGrade grade of the pipe
+     * @param pipeColour colour of the pipe
+     * @param innerInsulation true or false on whether inner insulation is
+     * present or not
+     * @param outerReinforcement whether outer reinforcement is present
+     * @param chemicalResistance whether chemical resistance is present
+     * @param pipeQuantity the quantity of the pipe
+     * @return if the user specification matches one of the valid pipe types
+     * then returns true otherwise false
+     *
+     * check boolean is set to false at the beginning, if it matches one of the
+     * pipes' criteria then it changes to true if pipe is valid, it is added to
+     * pipeArray ArrayList.
      */
     public boolean pipeIsCreated(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColour, boolean innerInsulation, boolean outerReinforcement, boolean chemicalResistance, int pipeQuantity) {
         boolean check = false;
@@ -560,8 +564,8 @@ public class Main extends javax.swing.JFrame {
     }
 
     /**
-     * adds up the price for all the pipes currently in the arraylist and sets it to totalPrice
-     * also sets the pipePrice label to the current total price 
+     * adds up the price for all the pipes currently in the arraylist and sets
+     * it to totalPrice also sets the pipePrice label to the current total price
      */
     public void updatePrice() {
         totalPrice = 0;
@@ -570,9 +574,9 @@ public class Main extends javax.swing.JFrame {
         }
         pipePrice.setText(twoDP.format(totalPrice));    //updates the pipePrice label
     }
-    
+
     /**
-     * 
+     *
      * @param input the boolean parameter
      * @return if input is true 'Y' is returned otherwise 'N'
      */

@@ -120,8 +120,8 @@
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="errorLabel" min="-2" pref="300" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
+                                  <Component id="errorLabel" min="-2" pref="515" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                   <Component id="totalPriceLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="pipePrice" min="-2" pref="102" max="-2" attributes="0"/>
